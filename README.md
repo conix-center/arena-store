@@ -117,3 +117,36 @@ Where:
 - **args**: list of command-line arguments passed to the program
 - **env**: list of environment variables passed to the program
 - **channels**: list of (communication; mqtt or client sockets) channels the program has access to (only suppported for WASM programs)
+
+## Quick Setup
+
+See [filebrowser documentation](https://filebrowser.org/) for details.
+
+### From docker
+
+```
+docker run \
+    -v /path/to/users-home-files-root:/srv/users \
+    -v /path/database.db:/database.db \
+    -p 80:80 \
+    conixcenter/arena-store
+```
+
+**Notes**:
+- The user home files are located under ```/srv/users```, and this should be mapped to some folder in the host (``` -v /path/to/users-home-files-root:/srv/users```); 
+- A default user home skeleton is located under ```/srv/user-skel```; you can create your own user home skeleton on the host and map it by adding ``` -v /path/to/users-home-skel:/srv/user-skel```;
+- If you don't already have a ```database.db``` file, make sure to create a new empty file under the path you specified. 
+
+### From source
+
+- Clone the repo
+
+- Build assets and binary:
+```
+./wizard.sh -b
+```
+
+- Start filebrowser
+```
+filebrowser -r /path/to/your/files
+```
