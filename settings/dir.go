@@ -7,6 +7,7 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/filebrowser/filebrowser/v2/fileutils"
 	"github.com/spf13/afero"
 )
 
@@ -58,6 +59,17 @@ func (s *Settings) MakeUserDir(username, userScope, serverRoot string) (string, 
 	} else {
 		log.Printf("create user: mkdir user home dir: [%s] successfully.", userHome)
 	}
+
+	// copy user-skel, if exists in scope base dir
+	var skelPath = s.Defaults.Scope + string(os.PathSeparator) + "user-skel"
+	var exists bool
+	exists, err = afero.DirExists(fs, skelPath)
+	if (exists) {
+		if err = fileutils.Copy(fs,  skelPath, userHome); err != nil {
+			log.Printf("create user: failed to copy user skel to home dir: [%s]", userHome)
+		}
+	}
+
 	return userHome, err
 }
 
