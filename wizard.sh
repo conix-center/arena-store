@@ -34,13 +34,18 @@ buildAssets () {
 }
 
 buildBinary () {
+  cd $REPO/http
+
   if ! [ -x "$(command -v rice)" ]; then
+    go get github.com/GeertJohan/go.rice/rice
     go install github.com/GeertJohan/go.rice/rice
   fi
+  if ! [ -x "$(command -v rice)" ]; then
+    go build github.com/GeertJohan/go.rice/rice
+  fi
 
-  cd $REPO/http
   rm -rf rice-box.go
-  rice embed-go
+  ./rice embed-go
 
   cd $REPO
   go build -a -o filebrowser -ldflags "-s -w -X github.com/filebrowser/filebrowser/v2/version.CommitSHA=$COMMIT_SHA"
