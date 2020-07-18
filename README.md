@@ -1,6 +1,6 @@
 # ARENA Scene and Code Store
 
-Fork of [filebrowser](https://github.com/filebrowser/filebrowser) to provide a file managing interface. We configured filebrowser to provide each user its own directory, and performed minor adaptations to create a home user skeleton and default ARENA branding.
+Fork of [filebrowser](https://github.com/filebrowser/filebrowser) to provide a file management interface for the ARENA Scene/Code Store. We configured filebrowser to provide each user its own directory, and performed minor adaptations to create a home user skeleton and default ARENA branding.
 
 ## Organization
 
