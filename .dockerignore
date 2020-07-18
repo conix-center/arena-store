@@ -1,3 +1,6 @@
 testdata/
 .github/
 **.git
+frontend/node_modules/
+frontend/package-lock.json
+http/rice-box.go

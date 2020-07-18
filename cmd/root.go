@@ -334,7 +334,7 @@ func initConfig() {
 		v.AddConfigPath(".")
 		v.AddConfigPath(home)
 		v.AddConfigPath("/etc/filebrowser/")
-		v.SetConfigName(".filebrowser")
+		v.SetConfigName(".config")
 	} else {
 		v.SetConfigFile(cfgFile)
 	}

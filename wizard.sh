@@ -31,6 +31,7 @@ buildAssets () {
 
   npm run lint
   npm run build
+  cd ..
 }
 
 buildBinary () {
@@ -85,8 +86,15 @@ release () {
   echo "📦 Done! $semver released."
 }
 
+buildContainer(){
+  if [ ! -d "frontend/dist" ]; then
+    buildAssets
+  fi  
+  docker build -t conixcenter/arena-store .
+}
+
 usage() {
-  echo "Usage: $0 [-a] [-c] [-b] [-r <string>]" 1>&2;
+  echo "Usage: $0 [-a] [-c] [-b] [-d] [-i] [-r <string>]" 1>&2;
   exit 1;
 }
 
@@ -108,6 +116,9 @@ while getopts "bacr:d" o; do
       RELEASE=${OPTARG}
       ;;
     d)
+      CONTAINER="true"
+      ;;
+    i)
       DEBUG="true"
       ;;
     *)
@@ -127,6 +138,10 @@ fi
 
 if [ "$BINARY" = "true" ]; then
   buildBinary
+fi
+
+if [ "$CONTAINER" = "true" ]; then
+  buildContainer
 fi
 
 if [ "$RELEASE" != "" ]; then
