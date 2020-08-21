@@ -7,9 +7,9 @@ Fork of [filebrowser](https://github.com/filebrowser/filebrowser) to provide a f
 Each user can create subfolders which then are visible for ARENA scenes under **[ARENA URL]/store/**.
 
 ````
-home/                     <-- 'My Files' (user1)
+home/                      <-- 'My Files' (user1)
    |-models
-       |-Suzanne.gltf      <-- file available at [ARENA URL]/store/models/Suzanne.gltf
+       |-Suzanne.gltf      <-- file available at [ARENA URL]/store/users/user1/models/Suzanne.gltf
    |-hello-world/          <-- program 'hello-world', available unde
 ````
 
