@@ -1,8 +1,0 @@
-{
-  "name":"hello-world",
-  "filename":"helloworld.wasm",
-  "filetype":"WA",
-  "args":[ "arg1", "arg2"],
-  "env":[ "ENV_VAR1=1", "ENV_VAR2=2" ],
-  "channels": [ ]
- }
